@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -297,80 +296,6 @@
             font-size: 1.5rem;
         }
 
-        /* QR Code Section */
-        .qr-section {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-            text-align: center;
-            animation: fadeInUp 1s ease-out;
-            animation-delay: 0.5s;
-        }
-
-        .qr-section h2 {
-            color: #1e3c72;
-            margin-bottom: 20px;
-        }
-
-        .qr-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .qr-code {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            border: 3px solid #ffd700;
-        }
-
-        .qr-description {
-            color: #666;
-            font-style: italic;
-            max-width: 400px;
-        }
-
-        .canvas-wrapper {
-            background-color: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        canvas {
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-        }
-
-        .download-btn {
-            background: linear-gradient(45deg, #1e3c72, #2a5298);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .download-btn:hover {
-            background-color: #1e40af;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(30, 60, 114, 0.3);
-        }
-
         .floating-elements {
             position: fixed;
             top: 0;
@@ -499,7 +424,6 @@
                 <li><a href="#timbre">🎯 Le Timbre</a></li>
                 <li><a href="#details">📋 Détails</a></li>
                 <li><a href="#contact">📞 Contact</a></li>
-                <li><a href="#qrcode">📱 QR Code</a></li>
             </ul>
         </nav>
     </header>
@@ -518,7 +442,7 @@
                     <div class="stamp-visual" onclick="zoomStamp()">
                         <div class="stamp-content">
                             <div class="aes-logo">
-                                <img src="image4.jpg" alt="Logo AES" style="width: 230px; height: 150px;">
+                                <img src="images/image4.jpg" alt="Logo AES" style="width: 230px; height: 150px;">
                             </div>
                         </div>
                     </div>
@@ -531,7 +455,7 @@
                     <div class="about-section">
                         <h2>À propos de ce timbre</h2>
                         <p class="description">
-                            Mission de patrouille des <strong>Forces de Défense et de Sécurité (FDS)</strong> ainsi que des <strong>Volontaires pour la Défense de la Patrie</strong> (VDP), résolument engagées sur le théâtre des opérations pour la reconquête du territoire national. En effet, ce timbre traduit la nécessité de l’union des forces combattantes dans le contexte de défis sécuritaire.
+                            Mission de patrouille des <strong>Forces de Défense et de Sécurité (FDS)</strong> ainsi que des <strong>Volontaires pour la Défense de la Patrie</strong> (VDP), résolument engagées sur le théâtre des opérations pour la reconquête du territoire national. En effet, ce timbre traduit la nécessité de l'union des forces combattantes dans le contexte de défis sécuritaire.
                         </p>
                         
                     </div>
@@ -563,7 +487,7 @@
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Elément burkinabè</span>
-                            <span class="detail-value">Zone d’insécurité et drapeau du pays </span>
+                            <span class="detail-value">Zone d'insécurité et drapeau du pays </span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Total émis</span>
@@ -606,26 +530,9 @@
                 </div>
             </div>
         </section>
-
-        <!-- Section QR Code -->
-        <section id="qrcode" class="section">
-            <div class="qr-section">
-                <h2>QR Code du Timbre</h2>
-                <div class="qr-container">
-                    <div class="canvas-wrapper">
-                        <canvas id="qrCanvas" width="300" height="300"></canvas>
-                    </div>
-                    <button class="download-btn" id="downloadBtn">⬇ Télécharger le QR Code</button>
-                    <p class="qr-description">
-                        Scannez ce QR code pour découvrir les détails du Timbre commémoratif AES.
-                    </p>
-                </div>
-            </div>
-        </section>
     </div>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
     <script>
         // Gestion du menu
         function toggleMenu() {
@@ -678,46 +585,6 @@
                     }, 500);
                 }
             });
-        });
-
-        // Génération du QR Code
-        const canvas = document.getElementById("qrCanvas");
-        const downloadBtn = document.getElementById("downloadBtn");
-
-        const data = `TIMBRE COMMEMORATIF AES
-Confédération des États du Sahel - An I
-
-DÉTAILS:
-- Émetteur: Burkina Faso
-- Valeur: 1 500 F CFA
-- Date: 2025
-- Total émis: 50 000 
-
-CONTACT:
-Web: www.laposte.bf
-Tél: (+226) 03 98 60 60
-Expo: www.expovirtuellelaposte.bf`;
-
-        // Génération du QR Code au chargement
-        window.addEventListener('load', () => {
-            QRCode.toCanvas(canvas, data, {
-                width: 300,
-                margin: 2,
-                color: {
-                    dark: "#1e40af",
-                    light: "#ffffff"
-                }
-            }, function (error) {
-                if (error) console.error("Erreur de génération du QR Code :", error);
-            });
-        });
-
-        // Téléchargement du QR Code
-        downloadBtn.addEventListener("click", () => {
-            const link = document.createElement("a");
-            link.download = "timbre-aes-qrcode.png";
-            link.href = canvas.toDataURL("image/png");
-            link.click();
         });
 
         // Zoom sur le timbre
